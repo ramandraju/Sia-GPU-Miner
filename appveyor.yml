@@ -23,16 +23,8 @@ install: |
 before_build:
   - cmake -G "Visual Studio 14 2015 Win64" -H. -Bbuild -DETHASHCUDA=ON
 build_script:
-  - cmake --build build --config %CONFIGURATION%
-after_build:
-  ps: |
-    cmake --build build --config $env:configuration --target package
-    if ($env:configuration -ne "Release") {
-      Get-Item build/ethminer-*-Windows.* | Rename-Item -NewName { $_.name -Replace 'ethminer','ethminer-dbg' }
-    }
-    if (-not $env:appveyor_pull_request_number) {
-      cmake --build build --target hunter_upload_cache
-    }
+  - make
+
 artifacts:
   - path: build/siared-*.zip
     name: siared
