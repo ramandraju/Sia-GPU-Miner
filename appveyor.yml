@@ -22,7 +22,7 @@ install: |
   pip install requests
 
 build_script:
-  - make
+  - C:\MinGW\bin\make.exe
 
 artifacts:
   - path: build/siared-*.zip
