@@ -20,8 +20,7 @@ install: |
   set PATH=%PATH%;C:/CUDA/v8.0/bin
   nvcc -V
   pip install requests
-before_build:
-  - cmake -G "Visual Studio 14 2015 Win64" -H. -Bbuild -DETHASHCUDA=ON
+
 build_script:
   - make
 
